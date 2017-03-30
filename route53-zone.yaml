@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Creates an Amazon Route 53 hosted zone
+Parameters:
+  DomainName:
+    Type: String
+    Description: The DNS name of an Amazon Route 53 hosted zone e.g. jevsejev.io
+    AllowedPattern: (?!-)[a-zA-Z0-9-.]{1,63}(?<!-)
+    ConstraintDescription: must be a valid DNS zone name.
+Resources:
+  DNS:
+    Type: AWS::Route53::HostedZone
+    Properties:
+      HostedZoneConfig:
+        Comment: !Join ['', ['Hosted zone for ', !Ref 'DomainName']]
+      Name: !Ref 'DomainName'
+      HostedZoneTags:
+      - Key: Application
+        Value: Blog

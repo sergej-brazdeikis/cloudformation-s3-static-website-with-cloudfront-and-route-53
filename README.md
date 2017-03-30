@@ -10,10 +10,10 @@ Building parts:
 
 ## How to
 
-- Apply `route53-zone.template` for the domain.
-- Apply `s3-static-website-with-cloudfront-and-route-53.template` for each subdomain need:
+- Apply `route53-zone.yaml` for the domain.
+- Apply `s3-static-website-with-cloudfront-and-route-53.yaml` for each subdomain need:
     - www.jevsejev.io
-    - perfect-blog.jevsejev.io
+    - blog.jevsejev.io
 - Upload your `index.html` to the S3 bucket
 
 Your website is provisioned.
