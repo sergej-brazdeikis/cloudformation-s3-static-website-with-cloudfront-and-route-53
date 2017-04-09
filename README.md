@@ -8,6 +8,12 @@ Building parts:
 - AWS Route53
 - AWS Cloudformation
 
+Features:
+- Cloudfront
+-- HTTP 2.0 enabled
+-- IPv6 enabled
+- Worldwide distribution
+
 ## How to
 
 - Apply `route53-zone.yaml` for the domain.

@@ -74,7 +74,8 @@ Resources:
             HTTPPort: '80'
             HTTPSPort: '443'
             OriginProtocolPolicy: http-only
-        Enabled: 'true'
+        Enabled: true
+        HttpVersion: 'http2'
         DefaultRootObject: index.html
         Aliases:
         - !Ref 'FullDomainName'
@@ -82,14 +83,14 @@ Resources:
           AllowedMethods:
           - GET
           - HEAD
-          Compress: 'true'
+          Compress: true
           TargetOriginId: S3Origin
           ForwardedValues:
-            QueryString: 'true'
+            QueryString: true
             Cookies:
               Forward: none
-          ViewerProtocolPolicy: allow-all
-        PriceClass: PriceClass_200
+          ViewerProtocolPolicy: https-only
+        PriceClass: PriceClass_All
         ViewerCertificate:
           CloudFrontDefaultCertificate: 'true'
   WebsiteDNSName:
