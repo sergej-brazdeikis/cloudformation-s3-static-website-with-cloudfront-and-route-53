@@ -12,6 +12,10 @@ Parameters:
     Description: The full domain name e.g. www.jevsejev.io
     AllowedPattern: (?!-)[a-zA-Z0-9-.]{1,63}(?<!-)
     ConstraintDescription: must be a valid DNS zone name.
+  AcmCertificateArn:
+    Type: String
+    Description: the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate.
+    AllowedPattern: "arn:aws:acm:.*"
 Mappings:
   RegionMap:
     us-east-1:
@@ -89,10 +93,11 @@ Resources:
             QueryString: true
             Cookies:
               Forward: none
-          ViewerProtocolPolicy: https-only
+          ViewerProtocolPolicy: redirect-to-https
         PriceClass: PriceClass_All
         ViewerCertificate:
-          CloudFrontDefaultCertificate: 'true'
+          AcmCertificateArn: !Ref AcmCertificateArn
+          SslSupportMethod: sni-only
   WebsiteDNSName:
     Type: AWS::Route53::RecordSetGroup
     Properties:
