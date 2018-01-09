@@ -20,28 +20,20 @@ Mappings:
   RegionMap:
     us-east-1:
       S3HostedZoneId: Z3AQBSTGFYJSTF
-      S3WebsiteEndpoint: s3-website-us-east-1.amazonaws.com
     us-west-1:
       S3HostedZoneId: Z2F56UZL2M1ACD
-      S3WebsiteEndpoint: s3-website-us-west-1.amazonaws.com
     us-west-2:
       S3HostedZoneId: Z3BJ6K6RIION7M
-      S3WebsiteEndpoint: s3-website-us-west-2.amazonaws.com
     eu-west-1:
       S3HostedZoneId: Z1BKCTXD74EZPE
-      S3WebsiteEndpoint: s3-website-eu-west-1.amazonaws.com
     ap-southeast-1:
       S3HostedZoneId: Z3O0J2DXBE1FTB
-      S3WebsiteEndpoint: s3-website-ap-southeast-1.amazonaws.com
     ap-southeast-2:
       S3HostedZoneId: Z1WCIGYICN2BYD
-      S3WebsiteEndpoint: s3-website-ap-southeast-2.amazonaws.com
     ap-northeast-1:
       S3HostedZoneId: Z2M4EHUR26P7ZW
-      S3WebsiteEndpoint: s3-website-ap-northeast-1.amazonaws.com
     sa-east-1:
       S3HostedZoneId: Z31GFT0UA1I2HV
-      S3WebsiteEndpoint: s3-website-sa-east-1.amazonaws.com
 Resources:
   WebsiteBucket:
     Type: AWS::S3::Bucket
@@ -71,8 +63,7 @@ Resources:
       DistributionConfig:
         Comment: Cloudfront Distribution pointing to S3 bucket
         Origins:
-        - DomainName: !Join [., [!Ref 'FullDomainName', !FindInMap [RegionMap, !Ref 'AWS::Region',
-                S3WebsiteEndpoint]]]
+        - DomainName: !Select [2, !Split ["/", !GetAtt WebsiteBucket.WebsiteURL]]
           Id: S3Origin
           CustomOriginConfig:
             HTTPPort: '80'
