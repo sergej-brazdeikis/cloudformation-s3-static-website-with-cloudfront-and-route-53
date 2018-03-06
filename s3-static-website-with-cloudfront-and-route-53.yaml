@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Creates an S3 bucket configured for hosting a static website, and a Route
-  53 DNS record pointing to the bucket
+  53 DNS record pointing to the bucket test edit
 Parameters:
   DomainName:
     Type: String
