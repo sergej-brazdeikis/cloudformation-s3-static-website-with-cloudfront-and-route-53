@@ -16,24 +16,6 @@ Parameters:
     Type: String
     Description: the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate.
     AllowedPattern: "arn:aws:acm:.*"
-Mappings:
-  RegionMap:
-    us-east-1:
-      S3HostedZoneId: Z3AQBSTGFYJSTF
-    us-west-1:
-      S3HostedZoneId: Z2F56UZL2M1ACD
-    us-west-2:
-      S3HostedZoneId: Z3BJ6K6RIION7M
-    eu-west-1:
-      S3HostedZoneId: Z1BKCTXD74EZPE
-    ap-southeast-1:
-      S3HostedZoneId: Z3O0J2DXBE1FTB
-    ap-southeast-2:
-      S3HostedZoneId: Z1WCIGYICN2BYD
-    ap-northeast-1:
-      S3HostedZoneId: Z2M4EHUR26P7ZW
-    sa-east-1:
-      S3HostedZoneId: Z31GFT0UA1I2HV
 Resources:
   WebsiteBucket:
     Type: AWS::S3::Bucket
